@@ -1,0 +1,3 @@
+---
+---
+{{ site.data.GOPCINFO | jsonify }}
