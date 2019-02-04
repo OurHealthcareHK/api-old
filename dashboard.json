@@ -1,3 +1,5 @@
+---
+---
 [{  
   {% capture latestOccupancy %}{% assign y = site.data.MEDOCCUPANCY | size | minus: 1 %}{% assign x = site.data.MEDOCCUPANCY[0] | size | minus: 1 %}{{ site.data.MEDOCCUPANCY[y][x] }}{% endcapture %} 
   {% capture secondlatestOccupancy %}{% assign y = site.data.MEDOCCUPANCY | size | minus: 2 %}{% assign x = site.data.MEDOCCUPANCY[0] | size | minus: 1 %}{{ site.data.MEDOCCUPANCY[y][x] }}{% endcapture %}
