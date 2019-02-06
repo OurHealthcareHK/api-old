@@ -6,7 +6,7 @@
   {% assign percent = latestOccupancy | minus: secondlatestOccupancy %}
   "type": "StatsCard",
   "label": "平均內科床位佔用率",
-  "total": "{{ latestOccupancy  | minus : 0}}%",
+  "total": "{{ latestOccupancy}}%",
   "movement": {{ percent }}
 },{
   {% capture latestOccupancy %}{% assign y = site.data.AEDATTENDANCE | size | minus: 1 %}{% assign x = site.data.AEDATTENDANCE[0] | size | minus: 1 %}{{ site.data.AEDATTENDANCE[y][x]}}{% endcapture %} 
@@ -14,7 +14,7 @@
   {% assign percent = latestOccupancy | minus: secondlatestOccupancy %}
   "type": "StatsCard",
   "label": "經急症室求診人次",
-  "total": "{{ latestOccupancy | minus : 0}}",
+  "total": "{{ latestOccupancy }}",
   "movement": {{ percent }}
 },{
   {% capture latestOccupancy %}{% assign y = site.data.AEDADMISSION | size | minus: 1 %}{% assign x = site.data.AEDADMISSION[0] | size | minus: 1 %}{{ site.data.AEDADMISSION[y][x]}}{% endcapture %} 
@@ -22,6 +22,6 @@
   {% assign percent = latestOccupancy | minus: secondlatestOccupancy %}
   "type": "StatsCard",
   "label": "經急症室入院人次",
-  "total": "{{ latestOccupancy | minus : 0}}",
+  "total": "{{ latestOccupancy }}",
   "movement": {{ percent }}
 }]
