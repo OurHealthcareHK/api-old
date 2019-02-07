@@ -1,10 +1,10 @@
 ---
 ---
-[{
+[[{
   {% capture date %}{% assign y = site.data.MEDOCCUPANCY | size | minus: 1 %}{{ site.data.MEDOCCUPANCY[y][0] }}{% endcapture %} 
   "type": "Header.H2",
   "label": "截至 {{ date }} 的急症室及內科使用率"
-},{  
+}],[{  
   {% capture latestOccupancy %}{% assign y = site.data.MEDOCCUPANCY | size | minus: 1 %}{% assign x = site.data.MEDOCCUPANCY[0] | size | minus: 1 %}{{ site.data.MEDOCCUPANCY[y][x] }}{% endcapture %} 
   {% capture secondlatestOccupancy %}{% assign y = site.data.MEDOCCUPANCY | size | minus: 2 %}{% assign x = site.data.MEDOCCUPANCY[0] | size | minus: 1 %}{{ site.data.MEDOCCUPANCY[y][x] }}{% endcapture %}
   {% assign percent = latestOccupancy | minus: secondlatestOccupancy %}
@@ -30,4 +30,4 @@
   "label": "經急症室入院人次",
   "total": "{{ latestOccupancy }}",
   "movement": {{ percent }}
-}]
+}]]
