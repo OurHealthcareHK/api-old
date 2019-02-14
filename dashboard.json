@@ -30,4 +30,19 @@
   "label": "經急症室入院人次",
   "total": "{{ latestOccupancy }}",
   "movement": {{ percent }}
-}]]
+}],[{
+  "type": "Header.H2",
+  "label": "季節性流感強度水平 (MEM)"
+}],[
+    {% assign values = "" %}
+    {% for row in site.data.FLUEXPRESS %}
+      {% if row[3].size > 0 %}
+        {% assign values = values | append: " " | append: row[16] %}
+      {% endif %}
+    {% endfor %}
+    {% assign divisor = values[-2] | times: 0.01 %}
+  "type": "StatsCard",
+  "label": "流感樣疾病爆發個案",
+  "total": "{{ values[-1] }}",
+  "movement": {{ values[-1] | minus: values[-2] | divided_by: divisor | round: 1 }}
+]]
