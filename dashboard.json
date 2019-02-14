@@ -57,6 +57,6 @@
     {% assign divisor = values[-2] | times: 0.01 %}
   "type": "StatsCard",
   "label": "公立醫院與流感相關的入院率",
-  "total": "{{ values[-1] }}",
+  "total": "{{ values[-1] }}/每一萬人",
   "movement": {{ values[-1] | minus: values[-2] | divided_by: divisor | round: 1 }}
 }]]
