@@ -40,6 +40,7 @@
         {% assign values = values | append: " " | append: row[16] %}
       {% endif %}
     {% endfor %}
+    {% assign values = values | split: " " %}
     {% assign divisor = values[-2] | times: 0.01 %}
   "type": "StatsCard",
   "label": "流感樣疾病爆發個案",
