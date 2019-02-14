@@ -46,4 +46,17 @@
   "label": "流感樣疾病爆發個案",
   "total": "{{ values[-1] }}",
   "movement": {{ values[-1] | minus: values[-2] | divided_by: divisor | round: 1 }}
+},{
+    {% assign values = "" %}
+    {% for row in site.data.FLUEXPRESS %}
+      {% if row[3].size > 0 %}
+        {% assign values = values | append: " " | append: row[23] %}
+      {% endif %}
+    {% endfor %}
+    {% assign values = values | split: " " %}
+    {% assign divisor = values[-2] | times: 0.01 %}
+  "type": "StatsCard",
+  "label": "公立醫院與流感相關的入院率",
+  "total": "{{ values[-1] }}",
+  "movement": {{ values[-1] | minus: values[-2] | divided_by: divisor | round: 1 }}
 }]]
