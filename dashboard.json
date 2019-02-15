@@ -43,6 +43,15 @@
     {% assign values = values | split: " " %}
     {% assign divisor = values[-2] | times: 0.01 %}
     {% assign outbreaks = values[-1] %}
+    {% assign outbreakMEM = "低" %}
+    {% if outbreaks >= 155.18 %}
+      {% assign outbreakMEM = "非常高" %}
+    {% elsif outbreaks >= 97.62 %}
+      {% assign outbreakMEM = "高" %}
+    {% elsif outbreaks >= 34.20 %}
+      {% assign outbreakMEM = "中等" %}
+    {% endif %}
+    
   "type": "StatsCard",
   "label": "流感樣疾病爆發個案",
   "total": "{{ outbreaks }}",
@@ -50,7 +59,7 @@
 },{
   "type": "StatsCard",
   "label": "流感在社區的傳播性",
-  "total": "低"
+  "total": "{{ outbreakMEM }}"
 },{
     {% assign values = "" %}
     {% for row in site.data.FLUEXPRESS %}
