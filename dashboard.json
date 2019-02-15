@@ -33,7 +33,7 @@
 }],[{
   "type": "Header.H2",
   "label": "季節性流感強度水平 (MEM)"
-}],[{
+}],[[{
     {% assign values = "" %}
     {% for row in site.data.FLUEXPRESS %}
       {% if row[3].size > 0 %}
@@ -86,7 +86,7 @@
   "label": "公立醫院與流感相關的入院率",
   "total": "{{ admissions }}/每一萬人",
   "movement": {{ values[-1] | minus: values[-2] | divided_by: divisor | round: 1 }}
-},[{
+}],[{
   "type": "StampCard",
   "label": "流感在社區的傳播性: {{ outbreakMEM }}",
   "footer": "所有院舍的流感樣疾病爆發的中、高及非常高MEM強度水平值分別定為34.20、97.62及155.18。",
