@@ -44,12 +44,16 @@
     {% assign divisor = values[-2] | times: 0.01 %}
     {% assign outbreaks = values[-1] | times: 1 %}
     {% assign outbreakMEM = "低" %}
+    {% assign color = "green" %}
     {% if outbreaks >= 155.18 %}
       {% assign outbreakMEM = "非常高" %}
+      {% assign color = "black" %}
     {% elsif outbreaks >= 97.62 %}
       {% assign outbreakMEM = "高" %}
+      {% assign color = "red" %}
     {% elsif outbreaks >= 34.20 %}
       {% assign outbreakMEM = "中等" %}
+      {% assign color = "yellow" %}
     {% endif %}
     
   "type": "StatsCard",
@@ -59,7 +63,7 @@
 },{
   "type": "StampCard",
   "label": "流感在社區的傳播性: {{ outbreakMEM }}",
-  "color": "green",
+  "color": "{{ color }}",
   "icon": "activity"
 },{
     {% assign values = "" %}
@@ -72,19 +76,24 @@
     {% assign divisor = values[-2] | times: 0.01 %}
     {% assign admissions = values[-1] | times: 1 %}
     {% assign admissionsMEM = "低" %}
+    {% assign color = "green" %}
     {% if admissions >= 2.54 %}
       {% assign admissionsMEM = "非常高" %}
+      {% assign color = "black" %}
     {% elsif admissions >= 1.59 %}
       {% assign admissionsMEM = "高" %}
+      {% assign color = "red" %}  
     {% elsif admissions >= 0.55 %}
       {% assign admissionsMEM = "中等" %}
+      {% assign color = "yellow" %}
     {% endif %}
   "type": "StatsCard",
   "label": "公立醫院與流感相關的入院率",
   "total": "{{ admissions }}/每一萬人",
   "movement": {{ values[-1] | minus: values[-2] | divided_by: divisor | round: 1 }}
 },{
-  "type": "StatsCard",
-  "label": "流感的嚴重程度",
-  "total": "{{ admissionsMEM }}"
+  "type": "StampCard",
+  "label": "流感的嚴重程度: {{ admissionsMEM }}",
+  "color": "{{ color }}",
+  "icon": "activity"
 }]]
