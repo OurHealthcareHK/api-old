@@ -46,9 +46,9 @@
     {% assign outbreakMEM = '低' %}
     {% if outbreaks >= 155.18 %}
       {% assign outbreakMEM = '非常高' %}
-    {% else if outbreaks >= 97.62 %}
+    {% elsif outbreaks >= 97.62 %}
       {% assign outbreakMEM = '高' %}
-    {% else if outbreaks >= 34.20 %}
+    {% elsif outbreaks >= 34.20 %}
       {% assign outbreakMEM = '中等' %}
     {% endif %}
   "type": "StatsCard",
@@ -72,9 +72,9 @@
     {% assign admissionsMEM = '低' %}
     {% if admissions >= 2.54 %}
       {% assign admissionsMEM = '非常高' %}
-    {% else if admissions >= 1.59 %}
+    {% elsif admissions >= 1.59 %}
       {% assign admissionsMEM = '高' %}
-    {% else if admissions >= 0.55 %}
+    {% elsif admissions >= 0.55 %}
       {% assign admissionsMEM = '中等' %}
     {% endif %}
   "type": "StatsCard",
