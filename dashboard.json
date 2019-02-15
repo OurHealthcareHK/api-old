@@ -42,10 +42,23 @@
     {% endfor %}
     {% assign values = values | split: " " %}
     {% assign divisor = values[-2] | times: 0.01 %}
+    {% assign outbreaks = values[-1] %}
+    {% assign outbreakMEM = '低' %}
+    {% if outbreaks >= 155.18 %}
+      {% assign outbreakMEM = '非常高' %}
+    {% else if outbreaks >= 97.62 %}
+      {% assign outbreakMEM = '高' %}
+    {% else if outbreaks >= 34.20 %}
+      {% assign outbreakMEM = '中等' %}
+    {% endif %}
   "type": "StatsCard",
   "label": "流感樣疾病爆發個案",
-  "total": "{{ values[-1] }}",
-  "movement": {{ values[-1] | minus: values[-2] | divided_by: divisor | round: 1 }}
+  "total": "{{ outbreaks }}",
+  "movement": {{ outbreaks | minus: values[-2] | divided_by: divisor | round: 1 }}
+},{
+  "type": "StatsCard",
+  "label": "流感在社區的傳播性",
+  "total": "{{ outbreakMEM }}"
 },{
     {% assign values = "" %}
     {% for row in site.data.FLUEXPRESS %}
@@ -55,8 +68,21 @@
     {% endfor %}
     {% assign values = values | split: " " %}
     {% assign divisor = values[-2] | times: 0.01 %}
+    {% assign admissions = values[-1] %}
+    {% assign admissionsMEM = '低' %}
+    {% if admissions >= 2.54 %}
+      {% assign admissionsMEM = '非常高' %}
+    {% else if admissions >= 1.59 %}
+      {% assign admissionsMEM = '高' %}
+    {% else if admissions >= 0.55 %}
+      {% assign admissionsMEM = '中等' %}
+    {% endif %}
   "type": "StatsCard",
   "label": "公立醫院與流感相關的入院率",
-  "total": "{{ values[-1] }}/每一萬人",
+  "total": "{{ admissions }}/每一萬人",
   "movement": {{ values[-1] | minus: values[-2] | divided_by: divisor | round: 1 }}
+},{
+  "type": "StatsCard",
+  "label": "流感的嚴重程度",
+  "total": "{{ admissionsMEM }}"
 }]]
