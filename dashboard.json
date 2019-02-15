@@ -44,28 +44,22 @@
     {% assign divisor = values[-2] | times: 0.01 %}
     {% assign outbreaks = values[-1] | times: 1 %}
     {% assign outbreakMEM = "低" %}
-    {% assign color = "green" %}
+    {% assign color1 = "green" %}
     {% if outbreaks >= 155.18 %}
       {% assign outbreakMEM = "非常高" %}
-      {% assign color = "black" %}
+      {% assign color1 = "black" %}
     {% elsif outbreaks >= 97.62 %}
       {% assign outbreakMEM = "高" %}
-      {% assign color = "red" %}
+      {% assign color1 = "red" %}
     {% elsif outbreaks >= 34.20 %}
       {% assign outbreakMEM = "中等" %}
-      {% assign color = "yellow" %}
+      {% assign color1 = "yellow" %}
     {% endif %}
     
   "type": "StatsCard",
   "label": "流感樣疾病爆發個案",
   "total": "{{ outbreaks }}",
   "movement": {{ outbreaks | minus: values[-2] | divided_by: divisor | round: 1 }}
-},{
-  "type": "StampCard",
-  "label": "流感在社區的傳播性: {{ outbreakMEM }}",
-  "footer": "所有院舍的流感樣疾病爆發的中、高及非常高MEM強度水平值分別定為34.20、97.62及155.18。",
-  "color": "{{ color }}",
-  "icon": "activity"
 },{
     {% assign values = "" %}
     {% for row in site.data.FLUEXPRESS %}
@@ -92,6 +86,12 @@
   "label": "公立醫院與流感相關的入院率",
   "total": "{{ admissions }}/每一萬人",
   "movement": {{ values[-1] | minus: values[-2] | divided_by: divisor | round: 1 }}
+},{
+  "type": "StampCard",
+  "label": "流感在社區的傳播性: {{ outbreakMEM }}",
+  "footer": "所有院舍的流感樣疾病爆發的中、高及非常高MEM強度水平值分別定為34.20、97.62及155.18。",
+  "color": "{{ color1 }}",
+  "icon": "activity"
 },{
   "type": "StampCard",
   "label": "流感的嚴重程度: {{ admissionsMEM }}",
