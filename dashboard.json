@@ -98,4 +98,12 @@
   "footer": "所有年歲人士入院率的中、高及非常高MEM強度水平值分別定為0.55、1.59及2.54。",
   "color": "{{ color }}",
   "icon": "activity"
-}]]
+}],[[{
+  {% capture date %}{% assign y = site.data.MEDOCCUPANCY | size | minus: 1 %}{{ site.data.MEDOCCUPANCY[y][0] }}{% endcapture %} 
+  "type": "Header.H2",
+  "label": "截至 {{ date }} 的急症室及內科使用率"
+}],[{
+  {% capture date %}{% assign y = site.data.MEDOCCUPANCY | size | minus: 1 %}{{ site.data.MEDOCCUPANCY[y][0] }}{% endcapture %} 
+  "type": "Header.H2",
+  "label": "截至 {{ date }} 的急症室及內科使用率"
+}]]]
