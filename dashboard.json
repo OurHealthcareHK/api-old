@@ -57,9 +57,10 @@
   "total": "{{ outbreaks }}",
   "movement": {{ outbreaks | minus: values[-2] | divided_by: divisor | round: 1 }}
 },{
-  "type": "StatsCard",
-  "label": "流感在社區的傳播性",
-  "total": "{{ outbreakMEM }}"
+  "type": "StampCard",
+  "label": "流感在社區的傳播性: {{ outbreakMEM }}",
+  "color": "green",
+  "icon": "activity"
 },{
     {% assign values = "" %}
     {% for row in site.data.FLUEXPRESS %}
