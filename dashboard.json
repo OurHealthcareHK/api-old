@@ -44,6 +44,9 @@
     {% assign divisor = values[-2] | times: 0.01 %}
     {% assign outbreaks = values[-1] %}
     {% assign outbreakMEM = "低" %}
+    {% if outbreaks >= 155.18 %}
+      {% assign outbreakMEM = "非常高" %}
+    {% endif %}
     
   "type": "StatsCard",
   "label": "流感樣疾病爆發個案",
